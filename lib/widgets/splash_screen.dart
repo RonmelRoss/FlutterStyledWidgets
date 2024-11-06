@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_styled_widgets/widgets/home_screen.dart';
+import 'package:flutter_styled_widgets/widgets/login_screen.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,10 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     // Set a timer to navigate to HomeScreen after 3 seconds
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
-      );
+      Get.to(LoginScreen());
     });
   }
 

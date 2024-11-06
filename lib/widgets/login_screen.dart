@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_widgets/constants/enums.dart';
-import 'package:flutter_styled_widgets/shared/app_state.dart';
+import 'package:flutter_styled_widgets/shared/global_controller.dart';
 import 'package:flutter_styled_widgets/widgets/home_screen.dart';
 import 'package:flutter_styled_widgets/widgets/signup_screen.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -12,8 +12,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var appState = context.read<AppState>();
-
     return Scaffold(
       body: Stack(
         children: [
@@ -21,7 +19,7 @@ class LoginScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/barn.jpg'),
+                image: AssetImage('assets/images/background.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -38,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'THE BARN',
+                    'Styled Widgets',
                     style: TextStyle(
                       fontSize: 36,
                       fontWeight: FontWeight.bold,
@@ -79,14 +77,14 @@ class LoginScreen extends StatelessWidget {
 
                       if (usernameText == UserRole.admin.name)
                       {
-                        appState.setUserRole(UserRole.admin);
+                        Get.find<GlobalController>().setRole(UserRole.admin);
                       }
                       else if (usernameText == UserRole.kitchen.name)
                       {
-                        appState.setUserRole(UserRole.kitchen);
+                        Get.find<GlobalController>().setRole(UserRole.kitchen);
                       }
                       else {
-                        appState.setUserRole(UserRole.user);
+                        Get.find<GlobalController>().setRole(UserRole.user);
                       }
 
                       Navigator.push(

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_widgets/shared/app_state.dart';
+import 'package:flutter_styled_widgets/shared/global_controller.dart';
 import 'package:flutter_styled_widgets/widgets/splash_screen.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const GetMaterialApp(home: MyApp()));
+  runApp(GetMaterialApp(
+    home: const MyApp(),
+    initialBinding: BindingsBuilder(() {
+        Get.put(GlobalController());
+      }),
+  ));
 }
 
 class MyApp extends StatelessWidget {
